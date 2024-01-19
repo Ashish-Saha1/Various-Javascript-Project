@@ -1,0 +1,103 @@
+.container{
+    width: 75%;
+    height: auto;
+    background-color: lightcyan;
+    margin: 0 auto;
+    border: 4px solid rgb(206, 227, 235);
+    border-radius: 5px;
+}
+
+header{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header h1{
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.logo{
+    width: 15%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid;
+}
+
+form{
+    background-color: rgb(180, 210, 236);
+    padding: 15px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+   justify-content: center;
+   border-radius: 5px;
+    
+}
+
+.task{
+    margin: 25px 5px;
+   
+}
+
+
+.incomplete-task{
+    background-color:  rgb(180, 210, 236);
+    padding: 10px;
+    border-radius: 5px;
+    border: 4px solid  rgb(145, 169, 190);
+    width: 35%;
+    float: left;
+    margin-left: 3%;
+}
+
+.complete-task{
+    background-color:  rgb(180, 210, 236);
+    padding: 10px;
+    border-radius: 5px;
+    border: 4px solid  rgb(145, 169, 190);
+    width: 35%;
+    float: right;
+    margin-right: 3%;
+}
+
+.incomplete-task h2{
+    margin-top: 0;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px ;
+}
+
+.to-do-list{
+    padding-left: 0px;
+
+}
+
+
+
+.to-do-list li{
+    list-style: none;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 5px 0;
+   
+}
+
+.delete-task{
+    padding-left: 0;
+  
+}
+.delete-task li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

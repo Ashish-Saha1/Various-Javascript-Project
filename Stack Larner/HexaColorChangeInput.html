@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rgb Color Change</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .background{
+            width: 100%;
+            height: 100vh;
+            background-color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .background h1{
+            text-shadow: 0 0 3px #ffffff, 0 0 0 transparent;
+            text-align: center;
+        }
+
+        .background >button{
+            font-size: 20px;
+            font-weight: 600;
+            border: 3px solid gray;
+            padding: 7px 30px;
+            background-color: black;
+            color: #ffffff;
+            transition: .4s all;
+            text-shadow: 0 0 3px #ffffff, 0 0 0 transparent;
+        }
+
+        .background >button:hover{
+            background-color: #ffffff;
+            color: rgb(128, 128, 128);
+            cursor: pointer;
+        }
+
+        .background input{
+            text-align: center;
+            font-weight: 600;
+            height: 25px ;
+            width: 10rem;
+
+        }
+
+        .copy-btn{
+            text-align: center;
+            font-weight: 500;
+            height: 29px ;
+            width: 4rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="background">
+        <h1>Change the background color by clicking the following button</h1>
+        <div class="input-div">
+            <input type="text" disabled value="">
+            <button class="copy-btn">Copy</button>
+        </div>
+        <button class="btn">Click Here</button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+        window.onload = ()=> {
+            main()
+        }
+
+        let main = function(){
+            let background = document.querySelector('.background');
+            let button = document.querySelector('.btn')
+            let inputBox = document.querySelector('input')
+            button.addEventListener('click', function(){
+                let hexGenerator = changeColor();
+                background.style.backgroundColor = hexGenerator;
+                inputBox.value = hexGenerator;
+                console.log(hexGenerator)
+            });
+            
+        }
+
+        
+        
+        
+        let changeColor = function(){
+            let r = Math.round(Math.random() * 255).toString(16);
+            let g = Math.round(Math.random() * 255).toString(16);
+            let b = Math.round(Math.random() * 255).toString(16);
+            
+            return "#" + `${r}${g}${b}`.padStart(6, 0);
+        }
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

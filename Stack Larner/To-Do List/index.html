@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To To App by DOM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+ <div class="container">
+
+    <header>
+        <img class="logo" src="logo.png" alt="">
+        <h1>To-Do App</h1>
+    </header>
+
+    <form action="">
+        <label for="new-task">Add New Task</label>
+        <input type="text" id="new-task">
+        <input type="submit" value="Add Task">
+    </form>
+
+    <div class="task">
+
+        <div class="incomplete-task">
+            <h2>Incompleted Tasks</h2>
+            <ul class="to-do-list">
+                <li class="list">
+                    <input type="checkbox" name="" id="check-mark">
+                    <label for="check-mark">Task Name</label>
+                </li>
+
+                <li class="list">
+                    <input type="checkbox" name="" id="check-mark">
+                    <label for="check-mark">Task Name</label>
+                </li>
+
+                <li class="list">
+                    <input type="checkbox" name="" id="check-mark">
+                    <label for="check-mark">Task Name</label>
+                </li>
+          
+                
+            </ul>
+        </div>
+
+        <div class="complete-task">
+            <h2>Completed Tasks</h2>
+
+            <ul>
+                <li class="list">
+                    <label for="">Task Name</label>
+                    <button class="delete">Delete</button>
+                </li>
+            </ul>
+
+
+        </div>
+
+    </div>
+    
+
+
+</div>
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Custom Color palette</title>
+
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+
+    <div class="container">
+        <section class="color-section">
+            <div class="color-section_header">
+                <h3>Display Color</h3>
+                <h3>Thirtha</h3>
+                <p>Random Color</p>
+            </div>
+
+            <div class="color-section_color-picker">
+
+            </div>
+        </section>
+
+
+        <section class="change-color-section">
+            <div class="change-color-section_header">
+                <h3>Change & Copy Color</h3>
+                <div class="change-color-section_header__right">
+                    <p class="save-color-btn">Save</p>
+                    <p class="copy-color-btn">Copy</p>
+                </div>
+                
+            </div>
+
+            <div class="change-color-section_copy-mode">
+                <h3>Select Copy Mode</h3>
+                <div class="copy-options">
+                    <input type="radio" name="option" id="hex" value="hex" checked>
+                    <label for="hex">Hex</label>
+
+                    <input type="radio" name="option" id="rgb" value="rgb" >
+                    <label for="rgb">Rgb</label>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="input-div_input-hex">
+                    <label for="">Hex</label>
+                    <input class="hex-input" type="text"  value="">
+                    <span class="hash">#</span>
+                </div>
+
+                <div class="input-div_input-rgb">
+                    <label for="">Rgb</label>
+                    <input type="text"  value="" disabled>
+                    
+                </div>
+            </div>
+
+            <div class="adjust-rgb">
+                <h3>Adjust RGB Colors</h3>
+                
+                <div class="adjust-rgb_colors">
+                    <div class="adjust-rgb_red">
+                        <label for="red">Red <span>170</span></label>
+                        <input type="range" name="" id="red" min="0" max="255" value="170" >
+                        
+                    </div>
+    
+                    <div class="adjust-rgb_green">
+                        <label for="green">Green <span>190</span></label>
+                        <input type="range" name="" id="green" min="0" max="255" value="190">
+                        
+                    </div>
+    
+                    <div class="adjust-rgb_blue">
+                        <label for="blue">Blue <span>220</span></label>
+                        <input type="range" name="" id="blue" min="0" max="255" value="220">
+                        
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="color-palatte-Section">
+            <div class="header">
+                <h4>Preset Colors</h4>
+            </div>
+           
+            <div class="color-palatte">
+                    <!-- Below div is for example -->
+                <!-- <div class="color-palatte_color-code"></div> -->
+                                
+            </div>
+        </section>
+
+
+
+        <section class="custom-color-palatte-section">
+            <div class="header">
+                <h4>Custom Colors</h4>
+            </div>
+           
+            <div class="color-palatte color-palatte-custom">
+                    <!-- Below div is for example -->
+                <!-- <div class="color-palatte_color-code"></div> -->
+                                
+            </div>
+        </section>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+   <!-- Javascript link -->
+   <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.quote-div{
+    background-color: bisque;
+    width: 400px;
+    padding: 10px;
+    margin: 20px auto;
+    box-shadow: 2px 2px 3px rgb(216, 203, 187);
+}
+
+.quote-div_head{
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+
+.quote-div_head button{
+    background-color: beige;
+    border: none;
+    width: 80px;
+    height: 25px;
+    box-shadow: 1px 2px 3px gray;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.quote-div_show{
+    border-top: 1px solid rgb(235, 210, 182);
+    padding-top: 5px;
+    margin-top: 20px;
+    text-align: justify;
+}

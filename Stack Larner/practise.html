@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RGB Color Picker</title>
+</head>
+<body>
+    <label for="red">Red:</label>
+    <input type="range" id="red" min="0" max="255">
+    
+    <label for="green">Green:</label>
+    <input type="range" id="green" min="0" max="255">
+    
+    <label for="blue">Blue:</label>
+    <input type="range" id="blue" min="0" max="255">
+    
+    <input type="text" id="rgbCode" readonly>
+    
+    <script>
+        // Get references to the input elements
+        const redInput = document.getElementById('red');
+        const greenInput = document.getElementById('green');
+        const blueInput = document.getElementById('blue');
+        const rgbCodeInput = document.getElementById('rgbCode');
+
+        // Function to update the RGB code input
+        function updateRGBCode() {
+            const redValue = redInput.value;
+            const greenValue = greenInput.value;
+            const blueValue = blueInput.value;
+            const rgbCode = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+            rgbCodeInput.value = rgbCode;
+        }
+
+        // Attach event listeners to the input range elements
+        redInput.addEventListener('input', updateRGBCode);
+        greenInput.addEventListener('input', updateRGBCode);
+        blueInput.addEventListener('input', updateRGBCode);
+
+        // Initialize the RGB code input
+        updateRGBCode();
+
+
+
+      /**
+ * Description of your function.
+ *
+ * @param {Type} paramName - Description of the parameter.
+ * @returns {ReturnType} Description of the return value.
+ */
+
+
+/**
+ * @param {string} name - The name of the person.
+ * @param {number} age - The age of the person.
+ */
+
+
+
+
+    </script>
+</body>
+</html>

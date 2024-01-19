@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: lightgrey;
+}
+
+.container{
+    width: 400px;
+    background-color: #fff;
+    margin: 10px auto;
+    padding: 20px 10px;
+    box-shadow: 2px 2px 5px rgb(194, 194, 194);
+    border-radius: 5px;
+}
+
+.container_header{
+    text-align: center;
+    border-bottom: 1px solid lightgrey ;
+    padding-bottom: 5px;
+    margin-bottom: 15px ;
+}
+
+.container_header h5{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.container-result{
+    text-align: center;
+    font-size: 30px;
+
+    padding: 10px 0;
+}
+
+.container_input{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.increment, .decrement{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.increment input, .decrement input{
+    width: 105px;
+    height: 23px;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.increment button, .decrement button{
+    padding: 4px 5px;
+    background-color: black;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
