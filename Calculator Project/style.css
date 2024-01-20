@@ -35,7 +35,7 @@ align-items: center;
 .calculator input{
     width: calc(100% - 20px);
     height: 40px;
-    margin: 20px;
+    margin: 30px 20px 15px 20px;
     border-radius: 2px;
     border: none;
     padding: 5px 15px;
