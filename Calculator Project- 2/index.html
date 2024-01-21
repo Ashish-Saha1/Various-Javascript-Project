@@ -16,34 +16,34 @@
     </div>
 
         <div class="buttons">
-            <button class="operator">AC</button>
-            <button class="operator">Del</button>
-            <button class="operator">%</button>
-            <button class="operator">/</button>
+            <button onclick="clearAll('AC')" class="operator">AC</button>
+            <button onclick="getOperator('Del')" class="operator">Del</button>
+            <button onclick="getOperator('%')" class="operator">%</button>
+            <button onclick="getOperator('/')" class="operator">/</button>
 
         
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="operator multiply"> *</button>
+            <button onclick="getNum(7)">7</button>
+            <button onclick="getNum(8)">8</button>
+            <button onclick="getNum(9)">9</button>
+            <button onclick="getOperator('*')" class="operator"> *</button>
         
  
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="operator">-</button>
+            <button onclick="getNum(4)">4</button>
+            <button onclick="getNum(5)">5</button>
+            <button onclick="getNum(6)">6</button>
+            <button onclick="getOperator('-')" class="operator">-</button>
         
      
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="operator">+</button>
+            <button onclick="getNum(1)">1</button>
+            <button onclick="getNum(2)">2</button>
+            <button onclick="getNum(3)">3</button>
+            <button onclick="getOperator('+')" class="operator">+</button>
         
        
-            <button>00</button>
-            <button>0</button>
-            <button class="operator">.</button>
-            <button class="equal-btn">=</button>
+            <button onclick="getNum('00')">00</button>
+            <button onclick="getNum(0)">0</button>
+            <button onclick="getNum('.')" class="operator">.</button>
+            <button onclick="calculateFun('=')" class="equal-btn">=</button>
         </div>
     
     
