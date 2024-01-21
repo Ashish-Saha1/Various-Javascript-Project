@@ -7,27 +7,36 @@ body{
 
 .container{
     margin: 10vh auto;
-    width: 500px;
+    width: 350px;
     padding: 2rem;
     border-radius: 10px;
     background-color: #272727;
-    text-align: center;
+    /* text-align: center; */
 }
 
-input{
-    width: 370px;
+.heading{
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#input-box{
+    width: 100%;
     color: #666;
     font-size: 3rem;
     padding: .5rem 2rem;
     border-radius: 10px;
     text-align: right;
     background-color: #272727;
-    margin: 2rem;
+    margin-bottom: 1rem ;
+  
 }
 
 .buttons{
     margin: auto;
-    width: 470px;
+    width: 350px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -38,12 +47,15 @@ button{
     background-color: #272727;
     color: #666;
     margin: 0.5rem;
-    max-width: 100px;
-    max-height: 100px;
-    padding: 40px;
+    max-width: 60px;
+    max-height: 60px;
+    padding: 30px;
     border-radius: 10%;
     text-align: center;
     font-size: 20px;
     font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
