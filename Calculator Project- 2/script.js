@@ -53,7 +53,7 @@ let display = document.querySelector('#input-box')
 
 
 
-console.log(firstNumber)
+
 
 function getNum(num){
     if(step === 0 || step === 1){
@@ -65,11 +65,17 @@ function getNum(num){
         secondArr.push(num);
         lastNumber = Number(secondArr.join(''));
         display.value = lastNumber
+        
+    }else if(step === 3){
+        firstNumber = null;
+        lastNumber = null;
     }
 
     
     console.log(firstNumber)  
     console.log(lastNumber)
+    console.log(firstArr)
+    console.log(secondArr)
 }
 
 
@@ -80,23 +86,34 @@ function getOperator(operator){
 }
 
 function clearAll(){
-display.value = 0;
-let firstNumber = null;
-let lastNumber = null;
-let step = 0;
-let result = 0;
-let operation = null;
+   
+    
+        display.value = 0;
+        let firstNumber = null;
+        let lastNumber = null;
+        let step = 0;
+        let result = 0;
+        let operation = null;
+        
+        let firstArr = [];
+        let secondArr = [];
+        console.log(firstNumber)  
+            console.log(lastNumber)
+            console.log(firstArr)
+            console.log(secondArr)
+    
 
-let firstArr = [];
-let secondArr = [];
+    
 }
 
 
 function calculateFun(){
+    step = 3;
     if(operation === "+"){
         result = firstNumber + lastNumber;
         display.value = result;
         lastNumber = null
+        firstNumber = null
     }else if(operation === "-"){
         result = firstNumber - lastNumber;
         display.value = result;
@@ -107,7 +124,8 @@ function calculateFun(){
         result = firstNumber / lastNumber;
         display.value = result;
     }
+
+     
 }
 
 
-console.log(operation)
