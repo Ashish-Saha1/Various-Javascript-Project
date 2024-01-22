@@ -66,9 +66,6 @@ function getNum(num){
         lastNumber = Number(secondArr.join(''));
         display.value = lastNumber
         
-    }else if(step === 3){
-        firstNumber = null;
-        lastNumber = null;
     }
 
     
@@ -85,35 +82,18 @@ function getOperator(operator){
     console.log(operation)
 }
 
-function clearAll(){
-   
-    
-        display.value = 0;
-        let firstNumber = null;
-        let lastNumber = null;
-        let step = 0;
-        let result = 0;
-        let operation = null;
-        
-        let firstArr = [];
-        let secondArr = [];
-        console.log(firstNumber)  
-            console.log(lastNumber)
-            console.log(firstArr)
-            console.log(secondArr)
-    
 
-    
-}
 
 
 function calculateFun(){
-    step = 3;
+    
     if(operation === "+"){
         result = firstNumber + lastNumber;
         display.value = result;
-        lastNumber = null
-        firstNumber = null
+        // lastNumber = null
+        // firstNumber = null
+        firstArr = []
+        secondArr = []
     }else if(operation === "-"){
         result = firstNumber - lastNumber;
         display.value = result;
@@ -125,7 +105,26 @@ function calculateFun(){
         display.value = result;
     }
 
+    // secondArr = []
+    // lastNumber = null;
+    //firstNumber = result;
+    console.log(result)
+    console.log(firstNumber)
+    console.log(lastNumber)
      
 }
 
 
+function clearAll(){
+   
+    
+    display.value = 0;
+    firstNumber = null;
+    lastNumber = null;
+    step = 0;
+    result = 0;
+    operation = null;
+    firstArr = [];
+    secondArr = [];
+
+}
