@@ -57,43 +57,50 @@ let display = document.querySelector('#input-box')
 
 function getNum(num){
     if(step === 0 || step === 1){
+
         firstArr.push(num);
         step = 1;
         firstNumber = Number(firstArr.join(''))
         display.value = firstNumber
+     
     }else if(step === 2){
+        
         secondArr.push(num);
         lastNumber = Number(secondArr.join(''));
-        display.value = lastNumber
+        display.value = lastNumber;
+
+       
+        console.log(lastNumber)
         
+    }else if(step === 3){
+        lastNumber = null
+        console.log(step)
     }
 
-    
-    console.log(firstNumber)  
-    console.log(lastNumber)
-    console.log(firstArr)
-    console.log(secondArr)
+   
+
 }
 
 
 function getOperator(operator){
     step = 2;
+    console.log(step)
     operation = operator;
-    console.log(operation)
+    step++
+    console.log(step)
 }
 
 
 
 
 function calculateFun(){
-    
+    step = 3;
+    console.log(step)
     if(operation === "+"){
+        
         result = firstNumber + lastNumber;
         display.value = result;
-        // lastNumber = null
-        // firstNumber = null
-        firstArr = []
-        secondArr = []
+    
     }else if(operation === "-"){
         result = firstNumber - lastNumber;
         display.value = result;
@@ -108,9 +115,9 @@ function calculateFun(){
     // secondArr = []
     // lastNumber = null;
     //firstNumber = result;
-    console.log(result)
-    console.log(firstNumber)
-    console.log(lastNumber)
+    // console.log(result)
+    // console.log(firstNumber)
+    // console.log(lastNumber)
      
 }
 
@@ -128,3 +135,6 @@ function clearAll(){
     secondArr = [];
 
 }
+
+
+
