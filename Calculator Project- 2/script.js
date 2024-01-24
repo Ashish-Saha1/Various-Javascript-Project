@@ -72,7 +72,8 @@ function getNum(num){
        
         console.log(lastNumber)
         
-    }else if(step === 3){
+    }
+    else if(step === 3){
         lastNumber = null
         console.log(step)
     }
@@ -86,15 +87,14 @@ function getOperator(operator){
     step = 2;
     console.log(step)
     operation = operator;
-    step++
-    console.log(step)
+
 }
 
 
 
 
 function calculateFun(){
-    step = 3;
+ 
     console.log(step)
     if(operation === "+"){
         
