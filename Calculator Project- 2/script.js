@@ -107,10 +107,28 @@
 
 let display = document.querySelector('#input-box');
 
-console.log(display.value)
+display.addEventListener('input',function(event){
+    
+    let reg = /[0-9 + \- * / %]+$/ig
+
+    if(!reg.test(event.target.value)){
+        event.target.value = ''
+    }
+    
+
+})
 
 function getNum(num){
-display.value+=num;
+   //let reg = /^(\+|\-|\*|\%)/;
+   let reg = /^[\+]/;
+
+    if(reg.test(num)){
+        display.value = ""
+    }else{
+        display.value+=num;
+    }
+
+//display.value+=num;
    
 
 }
@@ -122,29 +140,49 @@ let inputArray = [];
 
 
 
+if(display.value.includes('+')){
+    inputArray = display.value.split('+');
+    display.value =  parseInt(inputArray[0]) + parseInt(inputArray[1])
+    
+}else if(display.value.includes('-')){
+    inputArray = display.value.split('-');
+    display.value =  parseInt(inputArray[0]) - parseInt(inputArray[1])
+}else if(display.value.includes('*')){
+    inputArray = display.value.split('*');
+    display.value =  parseInt(inputArray[0]) * parseInt(inputArray[1])
+}else if(display.value.includes('/')){
+    inputArray = display.value.split('/');
+    display.value =  parseInt(inputArray[0]) / parseInt(inputArray[1])
+}else if(display.value.includes('%')){
+    inputArray = display.value.split('%');
+    display.value =  parseInt(inputArray[0]) % parseInt(inputArray[1])
+}else{
+    display.value = ""
+}
 
 
 
 
-    if(display.value.includes('+')){
-        inputArray = display.value.split('+');
-        display.value =  parseInt(inputArray[0]) + parseInt(inputArray[1])
+
+    // if(display.value.includes('+')){
+    //     inputArray = display.value.split('+');
+    //     display.value =  parseInt(inputArray[0]) + parseInt(inputArray[1])
         
-    }else if(display.value.includes('-')){
-        inputArray = display.value.split('-');
-        display.value =  parseInt(inputArray[0]) - parseInt(inputArray[1])
-    }else if(display.value.includes('*')){
-        inputArray = display.value.split('*');
-        display.value =  parseInt(inputArray[0]) * parseInt(inputArray[1])
-    }else if(display.value.includes('/')){
-        inputArray = display.value.split('/');
-        display.value =  parseInt(inputArray[0]) / parseInt(inputArray[1])
-    }else if(display.value.includes('%')){
-        inputArray = display.value.split('%');
-        display.value =  parseInt(inputArray[0]) - parseInt(inputArray[1])
-    }else{
-        display.value = ""
-    }
+    // }else if(display.value.includes('-')){
+    //     inputArray = display.value.split('-');
+    //     display.value =  parseInt(inputArray[0]) - parseInt(inputArray[1])
+    // }else if(display.value.includes('*')){
+    //     inputArray = display.value.split('*');
+    //     display.value =  parseInt(inputArray[0]) * parseInt(inputArray[1])
+    // }else if(display.value.includes('/')){
+    //     inputArray = display.value.split('/');
+    //     display.value =  parseInt(inputArray[0]) / parseInt(inputArray[1])
+    // }else if(display.value.includes('%')){
+    //     inputArray = display.value.split('%');
+    //     display.value =  parseInt(inputArray[0]) % parseInt(inputArray[1])
+    // }else{
+    //     display.value = ""
+    // }
 
 
 
@@ -168,15 +206,3 @@ function clearAll(){
 
 
 
- 
-//  x.addEventListener('input', function(e){
-//  let x = e.target.value;
-// let reg = /[^a-z]/ig
-   
-// console.log(reg.test(x));
-//     if(reg.test(x)){
-
-//     }
-
-   
-//  })
