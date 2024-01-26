@@ -108,54 +108,53 @@
 let display = document.querySelector('#input-box');
 
 display.addEventListener('input',function(event){
-    
-    let reg = /[0-9 + \- * / %]+$/ig
+    let reg = /[0-9 + \- * / %]+$/ig;
 
     if(!reg.test(event.target.value)){
         event.target.value = ''
-    }
-    
-
+    } 
 })
 
-function getNum(num){
-   //let reg = /^(\+|\-|\*|\%)/;
-   let reg = /^[\+]/;
-
-    if(reg.test(num)){
+function getNum(num){  
+   let reg = /^[\+ \- \* \/ \%]/;
+    
+    if(reg.test(display.value)){
         display.value = ""
     }else{
         display.value+=num;
-    }
-
-//display.value+=num;
-   
-
+    }  
+//display.value+=num; 
 }
 
 function calculateFun(){
 let result;
 let inputArray = [];
 
+let regStartsWith = /^[\+ \- \* \/ \%]/;
+let regEndsWith = /[\+ \- \* \/ \%]$/;
+    
+if(regStartsWith.test(display.value)){
+    display.value = ""
+} else if(regEndsWith.test(display.value)){
+    display.value = ""
+}
 
-
-
-if(display.value.includes('+')){
+else if(display.value.includes('+')){
     inputArray = display.value.split('+');
-    display.value =  parseInt(inputArray[0]) + parseInt(inputArray[1])
+    display.value =  parseFloat(inputArray[0]) + parseFloat(inputArray[1])
     
 }else if(display.value.includes('-')){
     inputArray = display.value.split('-');
-    display.value =  parseInt(inputArray[0]) - parseInt(inputArray[1])
+    display.value =  parseFloat(inputArray[0]) - parseFloat(inputArray[1])
 }else if(display.value.includes('*')){
     inputArray = display.value.split('*');
-    display.value =  parseInt(inputArray[0]) * parseInt(inputArray[1])
+    display.value =  parseFloat(inputArray[0]) * parseFloat(inputArray[1])
 }else if(display.value.includes('/')){
     inputArray = display.value.split('/');
-    display.value =  parseInt(inputArray[0]) / parseInt(inputArray[1])
+    display.value =  parseFloat(inputArray[0]) / parseFloat(inputArray[1])
 }else if(display.value.includes('%')){
     inputArray = display.value.split('%');
-    display.value =  parseInt(inputArray[0]) % parseInt(inputArray[1])
+    display.value =  parseFloat(inputArray[0]) % parseFloat(inputArray[1])
 }else{
     display.value = ""
 }
