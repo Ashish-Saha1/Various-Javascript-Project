@@ -112,7 +112,7 @@ display.addEventListener('input',function(event){
 
     if(!reg.test(event.target.value)){
         event.target.value = ''
-    } 
+    }
 })
 
 function getNum(num){  
@@ -120,9 +120,15 @@ function getNum(num){
     
     if(reg.test(display.value)){
         display.value = ""
-    }else{
+    }else if(display.value.length >= 11){
+        display.style.fontSize = '2rem'
         display.value+=num;
-    }  
+    }else if(display.value.length <= 11){
+        display.style.fontSize = '2.5rem'
+        display.value+=num;
+    } else if(display.value.length <= 15){
+        display.value+=num;
+    }
 //display.value+=num; 
 }
 
@@ -196,7 +202,8 @@ function deleteNum(){
 
 
 function clearAll(){
-    display.value = ""
+    display.style.fontSize = '2.5rem'
+    display.value = "";
 }
 
 
