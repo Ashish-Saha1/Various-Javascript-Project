@@ -120,15 +120,25 @@ function getNum(num){
     
     if(reg.test(display.value)){
         display.value = ""
-    }else if(display.value.length >= 11){
+    } 
+    else if(display.value.length > 11 && display.value.length < 15){
         display.style.fontSize = '2rem'
         display.value+=num;
-    }else if(display.value.length <= 11){
-        display.style.fontSize = '2.5rem'
-        display.value+=num;
-    } else if(display.value.length <= 15){
+    }
+    
+    else if(display.value.length < 15){
+        console.log(display.value, display.value.length)
         display.value+=num;
     }
+    
+   
+    
+    
+
+
+
+
+
 //display.value+=num; 
 }
 
@@ -169,25 +179,7 @@ else if(display.value.includes('+')){
 
 
 
-    // if(display.value.includes('+')){
-    //     inputArray = display.value.split('+');
-    //     display.value =  parseInt(inputArray[0]) + parseInt(inputArray[1])
-        
-    // }else if(display.value.includes('-')){
-    //     inputArray = display.value.split('-');
-    //     display.value =  parseInt(inputArray[0]) - parseInt(inputArray[1])
-    // }else if(display.value.includes('*')){
-    //     inputArray = display.value.split('*');
-    //     display.value =  parseInt(inputArray[0]) * parseInt(inputArray[1])
-    // }else if(display.value.includes('/')){
-    //     inputArray = display.value.split('/');
-    //     display.value =  parseInt(inputArray[0]) / parseInt(inputArray[1])
-    // }else if(display.value.includes('%')){
-    //     inputArray = display.value.split('%');
-    //     display.value =  parseInt(inputArray[0]) % parseInt(inputArray[1])
-    // }else{
-    //     display.value = ""
-    // }
+   
 
 
 
@@ -196,7 +188,11 @@ else if(display.value.includes('+')){
 function deleteNum(){
     let convertString = display.value.toString();
    let deleteRightSideValue = convertString.slice(0, convertString.length -1)
-    display.value = deleteRightSideValue
+    display.value = deleteRightSideValue;
+    if(display.value.length < 11){
+        display.style.fontSize = '2.5rem'
+       
+    } 
     
 }
 
