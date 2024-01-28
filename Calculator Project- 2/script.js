@@ -176,14 +176,8 @@ else if(display.value.includes('+')){
 }
 
 
-
-
-
-   
-
-
-
 }
+
 
 function deleteNum(){
     let convertString = display.value.toString();
