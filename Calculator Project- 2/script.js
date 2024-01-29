@@ -122,7 +122,7 @@ function getNum(num){
         display.value = ""
     } 
     else if(display.value.length > 11 && display.value.length < 15){
-        display.style.fontSize = '2rem'
+        display.style.fontSize = '2rem';
         display.value+=num;
     }
     
