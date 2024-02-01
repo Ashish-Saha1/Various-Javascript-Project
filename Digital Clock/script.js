@@ -75,7 +75,7 @@ function clock(){
     min = min < 10? "0"+min:min;
     sec = sec < 10? "0"+sec:sec;
     hour = hour % 12;
-
+    hour = hour? hour: 12;
     let currentDate = dateObject.toDateString()
 
     displayHour.innerHTML = hour;
@@ -87,3 +87,5 @@ function clock(){
 
 
 setInterval(clock,1000)
+
+console.log(12%12)
