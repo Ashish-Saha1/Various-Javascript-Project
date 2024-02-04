@@ -18,6 +18,8 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 3px 2px 5px gray;
+    border-radius: 10px;
+    display: none;
 }
 
 .my-Quiz-app img{
@@ -30,7 +32,7 @@ body{
 }
 
 .my-Quiz-app_details h4{
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .my-Quiz-app_details p{
@@ -44,5 +46,8 @@ body{
     position: absolute;
     right: 0;
     bottom: 0;
-
+    background-color: tomato;
+    box-shadow: 3px 2px 5px gray;
+    border-radius: 0 0 10px 0 ;
+    cursor: pointer;
 }
