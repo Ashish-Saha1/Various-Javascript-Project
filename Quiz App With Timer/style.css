@@ -19,7 +19,7 @@ body{
     transform: translate(-50%, -50%);
     box-shadow: 3px 2px 5px gray;
     border-radius: 10px;
-    display: none;
+    display: block;
 }
 
 .my-Quiz-app img{
@@ -148,7 +148,7 @@ header h3{
         transform: translate(-50%, -50%);
         box-shadow: 3px 2px 5px gray;
         border-radius: 10px;
-        display: block;
+        display: none;
     }
 
     .question-page-1 header{
