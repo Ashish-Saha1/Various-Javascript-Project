@@ -188,6 +188,11 @@ header h3{
         padding: 15px 0 15px 10px;
         font-weight: 600;
         cursor: pointer;
+        transition: all .3s;
+    }
+
+    .question-page-1_question ul li:hover{
+       background-color: rgb(152, 185, 216);
     }
 
     .question-page-1 footer{

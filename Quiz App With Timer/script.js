@@ -14,7 +14,7 @@ let crossMarks = document.querySelectorAll('.fa-xmark')
 let checkMark = document.querySelector('.fa-check');
 let correctAns = document.querySelector('.correct-ans')
     
-console.log(crossMarks)
+
 
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
@@ -39,15 +39,24 @@ continueButton.addEventListener('click', ()=>{
         }else{
             clearInterval()
         }
-    }, 600);
+    }, 1000);
     
 
-   for(let i of crossMarks){
-    i.style.display = 'none'
-   }
-   checkMark.style.display = 'none'
+//    for(let i of crossMarks){
+//     i.style.display = 'none'
+//    }
+//    checkMark.style.display = 'none'
 //    correctAns.style.borderColor = 'red'
     
 })
 
 
+function questionDynamic(index){
+    
+
+
+
+
+
+
+}
