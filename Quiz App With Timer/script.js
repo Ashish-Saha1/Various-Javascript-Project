@@ -14,7 +14,7 @@ let crossMarks = document.querySelectorAll('.fa-xmark')
 let checkMark = document.querySelector('.fa-check');
 let correctAns = document.querySelector('.correct-ans')
     
-
+let nextQueButton = document.querySelector('.next-btn')
 
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
@@ -47,16 +47,43 @@ continueButton.addEventListener('click', ()=>{
 //    }
 //    checkMark.style.display = 'none'
 //    correctAns.style.borderColor = 'red'
-    
+questionDynamic(0)
 })
 
 
 function questionDynamic(index){
+    let question = document.querySelector('.question-page-1_question');
+    let questionHeadElement = document.createElement("h2")
+    questionHeadElement.innerHTML = questionsArr[index].question;
+   
+    question.append(questionHeadElement)
+    //'<h2>' +  questionsArr[index].question + '</h2>'
     
+     let questionUl = document.createElement('ul');
+ 
+         question.append(questionUl);
+  
 
+        for(let i = 0; i< questionsArr[index].ansOptions.length; i++){
+        
+            let questionUlLi = document.createElement('li');
+            questionUl.append(questionUlLi);
+            questionUlLi.innerHTML = questionsArr[index].ansOptions[i]
 
+        }
+
+        
 
 
 
 
 }
+
+
+
+nextQueButton.addEventListener('click', function(){
+    console.log('A');
+    
+
+
+})
