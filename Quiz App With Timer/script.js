@@ -47,17 +47,56 @@ continueButton.addEventListener('click', ()=>{
 //    }
 //    checkMark.style.display = 'none'
 //    correctAns.style.borderColor = 'red'
-questionDynamic(0)
+
+
+let indexCount = 0;
+questionDynamic(indexCount)
+
+nextQueButton.addEventListener('click', function(){
+   if(indexCount<questionsArr.length-1){
+        indexCount ++
+        questionDynamic(indexCount)
+        
+   }else{
+    console.log('closed')
+   }
+
+
+})
+
+
 })
 
 
 function questionDynamic(index){
-    let question = document.querySelector('.question-page-1_question');
-    let questionHeadElement = document.createElement("h2")
-    questionHeadElement.innerHTML = questionsArr[index].question;
+    //  let question = document.querySelector('.question-page-1_question');
+    // let questionHeadElement = document.createElement("h2")
+    // questionHeadElement.innerHTML = questionsArr[index].question;
    
-    question.append(questionHeadElement)
-    //'<h2>' +  questionsArr[index].question + '</h2>'
+    // question.append(questionHeadElement)
+   
+    
+    //  let questionUl = document.createElement('ul');
+ 
+    //      question.append(questionUl);
+  
+
+    //     for(let i = 0; i< questionsArr[index].ansOptions.length; i++){
+        
+    //         let questionUlLi = document.createElement('li');
+    //         questionUl.append(questionUlLi);
+    //         questionUlLi.innerHTML = questionsArr[index].ansOptions[i]
+
+    //     }
+
+
+
+    let question = document.querySelector('.question-page-1_question');
+    // let questionHeadElement = document.createElement("h2")
+    // questionHeadElement.innerHTML = questionsArr[index].question;
+   
+    question.innerHTML = '<h2>' +  questionsArr[index].question + '</h2>'
+   
     
      let questionUl = document.createElement('ul');
  
@@ -71,19 +110,18 @@ function questionDynamic(index){
             questionUlLi.innerHTML = questionsArr[index].ansOptions[i]
 
         }
-
-        
-
-
-
-
-}
-
-
-
-nextQueButton.addEventListener('click', function(){
-    console.log('A');
     
 
 
-})
+   
+
+
+
+        
+    // question.innerHTML = '<h2>' +  questionsArr[index].question + '</h2>'
+
+    // let questionUl = document.querySelector('.optionsUl')
+        
+    // console.log(questionUl)
+}
+
