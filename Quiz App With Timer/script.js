@@ -14,7 +14,8 @@ let crossMarks = document.querySelectorAll('.fa-xmark')
 let checkMark = document.querySelector('.fa-check');
 let correctAns = document.querySelector('.correct-ans')
     
-let nextQueButton = document.querySelector('.next-btn')
+let nextQueButton = document.querySelector('.next-btn');
+
 
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
@@ -32,15 +33,23 @@ continueButton.addEventListener('click', ()=>{
     rulePage.style.display = "none";
     questionPage1Button.style.display = 'block';
    
-    // timer.innerText = 15
+    nextQueButton.disabled = true;
+    
     setInterval(() => {
+        
         if(timer.innerText > 0){
           timer.innerText --;
+          
         }else{
+            nextQueButton.disabled = false;     
             clearInterval()
         }
     }, 1000);
     
+    console.log(timer.innerHTML);
+    
+     
+
 
 //    for(let i of crossMarks){
 //     i.style.display = 'none'
@@ -90,38 +99,38 @@ function questionDynamic(index){
     //     }
 
 
-
+            
     let question = document.querySelector('.question-page-1_question');
-    // let questionHeadElement = document.createElement("h2")
-    // questionHeadElement.innerHTML = questionsArr[index].question;
-   
-    question.innerHTML = '<h2>' +  questionsArr[index].question + '</h2>'
-   
-    
-     let questionUl = document.createElement('ul');
- 
-         question.append(questionUl);
-  
-
-        for(let i = 0; i< questionsArr[index].ansOptions.length; i++){
+    let questionHeadElement = '<h2>' + questionsArr[index].num + ". "+  questionsArr[index].question + '</h2>';
         
+    question.innerHTML = questionHeadElement;
+    
+    let questionUl = document.createElement('ul');
+         question.append(questionUl);
+                //create Li & input options in li innerHTML
+        for(let i = 0; i< questionsArr[index].ansOptions.length; i++){
             let questionUlLi = document.createElement('li');
             questionUl.append(questionUlLi);
             questionUlLi.innerHTML = questionsArr[index].ansOptions[i]
-
         }
-    
 
-
+        let pageNo = document.querySelector('.page1-of-5');
+        pageNo.innerHTML = questionsArr[index].num + " of " + questionsArr.length +" Questions";
    
+       let optionsLi = question.getElementsByTagName('li');
 
-
-
-        
-    // question.innerHTML = '<h2>' +  questionsArr[index].question + '</h2>'
-
-    // let questionUl = document.querySelector('.optionsUl')
-        
-    // console.log(questionUl)
+       for(let i of optionsLi){
+           i.addEventListener('click',(e)=>{
+                if(e.target.innerHTML === questionsArr[index].ans){
+                    // e.target.style.color = 'blue'
+                    console.log(e.target.classList.add('correct-ans'));
+                    
+                }else{
+                    e.target.style.color = 'red'
+                }
+                
+           })
+            
+       }
 }
 

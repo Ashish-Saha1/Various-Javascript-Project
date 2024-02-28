@@ -238,6 +238,7 @@ header h3{
         margin-left: 10px; 
     }
 
-    /* .correct-ans{
+    .correct-ans{
         border: 2px solid rgb(13, 223, 48) !important;
-    } */
+        color: rgb(23, 149, 253);
+    }
