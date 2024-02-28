@@ -15,7 +15,7 @@ let checkMark = document.querySelector('.fa-check');
 let correctAns = document.querySelector('.correct-ans')
     
 let nextQueButton = document.querySelector('.next-btn');
-
+let remainingTime;
 
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
@@ -34,19 +34,21 @@ continueButton.addEventListener('click', ()=>{
     questionPage1Button.style.display = 'block';
    
     nextQueButton.disabled = true;
+
+     remainingTime = setInterval(timerFunction, 1000)
     
-    setInterval(() => {
+    // setInterval(() => {
         
-        if(timer.innerText > 0){
-          timer.innerText --;
+    //     if(timer.innerText > 0){
+    //       timer.innerText --;
           
-        }else{
-            nextQueButton.disabled = false;     
-            clearInterval()
-        }
-    }, 1000);
+    //     }else{
+    //         nextQueButton.disabled = false;     
+    //         clearInterval()
+    //     }
+    // }, 1000);
     
-    console.log(timer.innerHTML);
+    
     
      
 
@@ -64,8 +66,9 @@ questionDynamic(indexCount)
 nextQueButton.addEventListener('click', function(){
    if(indexCount<questionsArr.length-1){
         indexCount ++
-        questionDynamic(indexCount)
-        
+        questionDynamic(indexCount);
+        nextQueButton.disabled = true;
+        setInterval(timerFunction, 1000)
    }else{
     console.log('closed')
    }
@@ -81,23 +84,14 @@ function questionDynamic(index){
     //  let question = document.querySelector('.question-page-1_question');
     // let questionHeadElement = document.createElement("h2")
     // questionHeadElement.innerHTML = questionsArr[index].question;
-   
     // question.append(questionHeadElement)
-   
-    
     //  let questionUl = document.createElement('ul');
- 
     //      question.append(questionUl);
-  
-
-    //     for(let i = 0; i< questionsArr[index].ansOptions.length; i++){
-        
+    //     for(let i = 0; i< questionsArr[index].ansOptions.length; i++){      
     //         let questionUlLi = document.createElement('li');
     //         questionUl.append(questionUlLi);
     //         questionUlLi.innerHTML = questionsArr[index].ansOptions[i]
-
     //     }
-
 
             
     let question = document.querySelector('.question-page-1_question');
@@ -122,11 +116,23 @@ function questionDynamic(index){
        for(let i of optionsLi){
            i.addEventListener('click',(e)=>{
                 if(e.target.innerHTML === questionsArr[index].ans){
-                    // e.target.style.color = 'blue'
-                    console.log(e.target.classList.add('correct-ans'));
+                    let iconCorrect = document.createElement('i');
+                    iconCorrect.setAttribute('class', 'fa-solid fa-check ')
+                    e.target.appendChild(iconCorrect)
+                    e.target.classList.add('correct-ans');
+                    clearInterval(remainingTime);
+                    nextQueButton.disabled = false;
+                    e.target.setAttribute('class', 'disabled-item')
+                    
                     
                 }else{
-                    e.target.style.color = 'red'
+                    let iconCross = document.createElement('i');
+                    iconCross.setAttribute('class', 'fa-solid fa-xmark')
+                    e.target.appendChild(iconCross)
+                    e.target.style.color = 'red';
+                    clearInterval(remainingTime);
+                    nextQueButton.disabled = false;
+                    e.target.setAttribute('class', 'disabled-item')
                 }
                 
            })
@@ -134,3 +140,26 @@ function questionDynamic(index){
        }
 }
 
+
+
+const timerFunction = ()=>{ 
+         //console.log(timer.innerText--)    
+        // if(timer.innerText > 0){
+        //   timer.innerText --;
+          
+        // }else{
+        //     nextQueButton.disabled = false; 
+
+        // }
+
+       
+
+         if(timer.innerText > 0){
+            timer.innerText --;
+            
+          }else{
+              nextQueButton.disabled = false; 
+            
+          }
+
+}
