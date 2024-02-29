@@ -15,9 +15,10 @@ let checkMark = document.querySelector('.fa-check');
 let correctAns = document.querySelector('.correct-ans')
     
 let nextQueButton = document.querySelector('.next-btn');
-// let optionsLi = document.querySelectorAll('.optionsUl li');
+
 let remainingTime;
-// console.log(optionsLi)
+let scoreCount = 0;
+
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
     rulePage.style.display = "block";
@@ -74,6 +75,14 @@ nextQueButton.addEventListener('click', function(){
         remainingTime = setInterval(timerFunction, 1000)
    }else{
     console.log('closed')
+    if(questionsArr.length === questionsArr[questionsArr.length-1].num){
+        questionPage1Button.style.display = 'none';
+       let resultPage = document.querySelector('.result-page');
+       let totalScore = document.querySelector('.score-calculation');
+       resultPage.style.display = 'block';
+        totalScore.innerHTML =  scoreCount;
+    }
+    console.log(questionsArr[questionsArr.length-1].num)
    }
 
 
@@ -114,7 +123,7 @@ function questionDynamic(index){
                     clearInterval(remainingTime);
                     nextQueButton.disabled = false;
                     e.target.setAttribute('class', 'disabled-item')
-                    
+                    scoreCount++
                     
                 }
                 // else if(timer.innerHTML === 0){
@@ -129,7 +138,7 @@ function questionDynamic(index){
                     clearInterval(remainingTime);
                     nextQueButton.disabled = false;
                     e.target.setAttribute('class', 'disabled-item')
-                    console.log(i)
+                   
                 }
 
                 

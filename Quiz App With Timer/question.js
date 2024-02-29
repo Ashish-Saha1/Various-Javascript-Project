@@ -33,5 +33,29 @@ const questionsArr = [
             "Hypertext processor",
             "Hypertext Preprocessor"
         ]
+    },
+
+    {
+        num: 4,
+        question: "React is a Library?",
+        ans: "React is a Library",
+        ansOptions:[
+            "React is a Library",
+            "React is not a Library",
+            "React is a Framework",
+            "None of above"
+        ]
+    },
+
+    {
+        num: 5,
+        question: "Node is a JavaScript runtime?",
+        ans: "Yes, Node is a JavaScript runtime",
+        ansOptions:[
+            "No, Node is a Language",
+            "Yes, Node is a JavaScript runtime",
+            "Node is a Framework",
+            "Node is a Library"
+        ]
     }
 ]
