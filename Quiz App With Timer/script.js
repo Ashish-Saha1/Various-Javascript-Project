@@ -15,8 +15,9 @@ let checkMark = document.querySelector('.fa-check');
 let correctAns = document.querySelector('.correct-ans')
     
 let nextQueButton = document.querySelector('.next-btn');
+// let optionsLi = document.querySelectorAll('.optionsUl li');
 let remainingTime;
-
+// console.log(optionsLi)
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
     rulePage.style.display = "block";
@@ -35,6 +36,7 @@ continueButton.addEventListener('click', ()=>{
    
     nextQueButton.disabled = true;
 
+     timer.innerHTML = 6;
      remainingTime = setInterval(timerFunction, 1000)
     
     // setInterval(() => {
@@ -68,7 +70,8 @@ nextQueButton.addEventListener('click', function(){
         indexCount ++
         questionDynamic(indexCount);
         nextQueButton.disabled = true;
-        setInterval(timerFunction, 1000)
+        timer.innerHTML = 6;
+        remainingTime = setInterval(timerFunction, 1000)
    }else{
     console.log('closed')
    }
@@ -81,19 +84,7 @@ nextQueButton.addEventListener('click', function(){
 
 
 function questionDynamic(index){
-    //  let question = document.querySelector('.question-page-1_question');
-    // let questionHeadElement = document.createElement("h2")
-    // questionHeadElement.innerHTML = questionsArr[index].question;
-    // question.append(questionHeadElement)
-    //  let questionUl = document.createElement('ul');
-    //      question.append(questionUl);
-    //     for(let i = 0; i< questionsArr[index].ansOptions.length; i++){      
-    //         let questionUlLi = document.createElement('li');
-    //         questionUl.append(questionUlLi);
-    //         questionUlLi.innerHTML = questionsArr[index].ansOptions[i]
-    //     }
-
-            
+               
     let question = document.querySelector('.question-page-1_question');
     let questionHeadElement = '<h2>' + questionsArr[index].num + ". "+  questionsArr[index].question + '</h2>';
         
@@ -111,7 +102,7 @@ function questionDynamic(index){
         let pageNo = document.querySelector('.page1-of-5');
         pageNo.innerHTML = questionsArr[index].num + " of " + questionsArr.length +" Questions";
    
-       let optionsLi = question.getElementsByTagName('li');
+        let optionsLi = question.getElementsByTagName('li');
 
        for(let i of optionsLi){
            i.addEventListener('click',(e)=>{
@@ -125,7 +116,12 @@ function questionDynamic(index){
                     e.target.setAttribute('class', 'disabled-item')
                     
                     
-                }else{
+                }
+                // else if(timer.innerHTML === 0){
+                //     console.log(e.target);
+                    
+                // }
+                else{
                     let iconCross = document.createElement('i');
                     iconCross.setAttribute('class', 'fa-solid fa-xmark')
                     e.target.appendChild(iconCross)
@@ -133,9 +129,21 @@ function questionDynamic(index){
                     clearInterval(remainingTime);
                     nextQueButton.disabled = false;
                     e.target.setAttribute('class', 'disabled-item')
+                    console.log(i)
                 }
+
+                
+                
+                
                 
            })
+
+           //console.log(i.setAttribute('class', 'disabled-item'));
+            // setTimeout(() => {
+            //     i.setAttribute('class', 'disabled-item')
+            // }, 6000);
+
+           let optionsDisable = setTimeout(setTimeoutFunctio, 6000, i)
             
        }
 }
@@ -143,16 +151,6 @@ function questionDynamic(index){
 
 
 const timerFunction = ()=>{ 
-         //console.log(timer.innerText--)    
-        // if(timer.innerText > 0){
-        //   timer.innerText --;
-          
-        // }else{
-        //     nextQueButton.disabled = false; 
-
-        // }
-
-       
 
          if(timer.innerText > 0){
             timer.innerText --;
@@ -163,3 +161,7 @@ const timerFunction = ()=>{
           }
 
 }
+
+        function setTimeoutFunctio(item){
+                item.setAttribute('class', 'disabled-item')
+            }
