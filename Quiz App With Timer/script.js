@@ -37,7 +37,7 @@ continueButton.addEventListener('click', ()=>{
    
     nextQueButton.disabled = true;
 
-     timer.innerHTML = 6;
+     timer.innerHTML = 10;
      remainingTime = setInterval(timerFunction, 1000)
     
     // setInterval(() => {
@@ -71,7 +71,7 @@ nextQueButton.addEventListener('click', function(){
         indexCount ++
         questionDynamic(indexCount);
         nextQueButton.disabled = true;
-        timer.innerHTML = 6;
+        timer.innerHTML = 10;
         remainingTime = setInterval(timerFunction, 1000)
    }else{
     console.log('closed')
@@ -112,55 +112,56 @@ function questionDynamic(index){
         pageNo.innerHTML = questionsArr[index].num + " of " + questionsArr.length +" Questions";
    
         //let optionsLi = question.getElementsByTagName('li');
-        let optionsLi = question.querySelectorAll('question-page-1_question ul');
-console.log(optionsLi)
-        for(let x of optionsLi){
-            x.addEventListener('click',(e)=>{
-                console.log(e.target)
-            })
-        }
-    //    for(let i of optionsLi){
-    //        i.addEventListener('click',(e)=>{
-    //             if(e.target.innerHTML === questionsArr[index].ans){
-    //                 let iconCorrect = document.createElement('i');
-    //                 iconCorrect.setAttribute('class', 'fa-solid fa-check ')
-    //                 e.target.appendChild(iconCorrect)
-    //                 e.target.classList.add('correct-ans');
-    //                 clearInterval(remainingTime);
-    //                 nextQueButton.disabled = false;
-    //                 e.target.setAttribute('class', 'disabled-item')
-    //                 scoreCount++
-    //                 console.log(i)
-    //             }
-    //             // else if(timer.innerHTML === 0){
-    //             //     console.log(e.target);
+        let optionsLi = question.getElementsByTagName('ul');
+// console.log(optionsLi)
+//         for(let x of optionsLi){
+//             x.addEventListener('click',(e)=>{
+//                 console.log(e.target)
+//             })
+//         }
+       for(let i of optionsLi){
+           i.addEventListener('click',(e)=>{
+                if(e.target.innerHTML === questionsArr[index].ans){
+                    let iconCorrect = document.createElement('i');
+                    iconCorrect.setAttribute('class', 'fa-solid fa-check ')
+                    e.target.appendChild(iconCorrect)
+                    e.target.classList.add('correct-ans');
+                    clearInterval(remainingTime);
+                    nextQueButton.disabled = false;
+                    e.target.setAttribute('class', 'disabled-item')
+                    scoreCount++
+                    console.log(i)
+                    setTimeoutFunctio(i)
+                }
+                // else if(timer.innerHTML === 0){
+                //     console.log(e.target);
                     
-    //             // }
-    //             else{
-    //                 let iconCross = document.createElement('i');
-    //                 iconCross.setAttribute('class', 'fa-solid fa-xmark')
-    //                 e.target.appendChild(iconCross)
-    //                 e.target.style.color = 'red';
-    //                 clearInterval(remainingTime);
-    //                 nextQueButton.disabled = false;
-    //                 e.target.setAttribute('class', 'disabled-item')
-                   
-    //             }
+                // }
+                else{
+                    let iconCross = document.createElement('i');
+                    iconCross.setAttribute('class', 'fa-solid fa-xmark')
+                    e.target.appendChild(iconCross)
+                    e.target.style.color = 'red';
+                    clearInterval(remainingTime);
+                    nextQueButton.disabled = false;
+                    e.target.setAttribute('class', 'disabled-item')
+                    setTimeoutFunctio(i)
+                }
 
                 
                 
                 
                 
-    //        })
+           })
 
-    //        //console.log(i.setAttribute('class', 'disabled-item'));
-    //         // setTimeout(() => {
-    //         //     i.setAttribute('class', 'disabled-item')
-    //         // }, 6000);
+           //console.log(i.setAttribute('class', 'disabled-item'));
+            // setTimeout(() => {
+            //     i.setAttribute('class', 'disabled-item')
+            // }, 6000);
 
-    //        let optionsDisable = setTimeout(setTimeoutFunctio, 6000, i)
+           let optionsDisable = setTimeout(setTimeoutFunctio, 10000, i)
             
-    //    }
+       }
 }
 
 
