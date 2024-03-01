@@ -40,33 +40,17 @@ continueButton.addEventListener('click', ()=>{
      timer.innerHTML = 10;
      remainingTime = setInterval(timerFunction, 1000)
     
-    // setInterval(() => {
-        
-    //     if(timer.innerText > 0){
-    //       timer.innerText --;
-          
-    //     }else{
-    //         nextQueButton.disabled = false;     
-    //         clearInterval()
-    //     }
-    // }, 1000);
-    
-    
-    
-     
-
-
-//    for(let i of crossMarks){
-//     i.style.display = 'none'
-//    }
-//    checkMark.style.display = 'none'
-//    correctAns.style.borderColor = 'red'
+ 
+   
 
 
 let indexCount = 0;
 questionDynamic(indexCount)
 
 nextQueButton.addEventListener('click', function(){
+    let totalScore = document.querySelector('.score-calculation');
+    let wishDisplay = document.querySelector('.display-wish');
+
    if(indexCount<questionsArr.length-1){
         indexCount ++
         questionDynamic(indexCount);
@@ -74,15 +58,21 @@ nextQueButton.addEventListener('click', function(){
         timer.innerHTML = 10;
         remainingTime = setInterval(timerFunction, 1000)
    }else{
-    console.log('closed')
-    if(questionsArr.length === questionsArr[questionsArr.length-1].num){
+        if(questionsArr.length === questionsArr[questionsArr.length-1].num){
         questionPage1Button.style.display = 'none';
-       let resultPage = document.querySelector('.result-page');
-       let totalScore = document.querySelector('.score-calculation');
-       resultPage.style.display = 'block';
+        let resultPage = document.querySelector('.result-page');
+        resultPage.style.display = 'block';
         totalScore.innerHTML =  scoreCount;
+        //console.log(totalScore.innerHTML == questionsArr.length)
+
+        if(totalScore.innerHTML == questionsArr.length){
+            wishDisplay.innerHTML = "Congratulations"
+        }else if(totalScore.innerHTML == 0){
+            wishDisplay.innerHTML = "Disaster"
+        }
     }
-    console.log(questionsArr[questionsArr.length-1].num)
+       
+
    }
 
 
@@ -113,53 +103,34 @@ function questionDynamic(index){
    
         //let optionsLi = question.getElementsByTagName('li');
         let optionsLi = question.getElementsByTagName('ul');
-// console.log(optionsLi)
-//         for(let x of optionsLi){
-//             x.addEventListener('click',(e)=>{
-//                 console.log(e.target)
-//             })
-//         }
-       for(let i of optionsLi){
-           i.addEventListener('click',(e)=>{
-                if(e.target.innerHTML === questionsArr[index].ans){
-                    let iconCorrect = document.createElement('i');
-                    iconCorrect.setAttribute('class', 'fa-solid fa-check ')
-                    e.target.appendChild(iconCorrect)
-                    e.target.classList.add('correct-ans');
-                    clearInterval(remainingTime);
-                    nextQueButton.disabled = false;
-                    e.target.setAttribute('class', 'disabled-item')
-                    scoreCount++
-                    console.log(i)
-                    setTimeoutFunctio(i)
-                }
-                // else if(timer.innerHTML === 0){
-                //     console.log(e.target);
-                    
-                // }
-                else{
-                    let iconCross = document.createElement('i');
-                    iconCross.setAttribute('class', 'fa-solid fa-xmark')
-                    e.target.appendChild(iconCross)
-                    e.target.style.color = 'red';
-                    clearInterval(remainingTime);
-                    nextQueButton.disabled = false;
-                    e.target.setAttribute('class', 'disabled-item')
-                    setTimeoutFunctio(i)
-                }
 
-                
-                
-                
-                
-           })
+    for(let i of optionsLi){
+      i.addEventListener('click',(e)=>{
+        if(e.target.innerHTML === questionsArr[index].ans){
+            let iconCorrect = document.createElement('i');
+            iconCorrect.setAttribute('class', 'fa-solid fa-check ')
+            e.target.appendChild(iconCorrect)
+            e.target.classList.add('correct-ans');
+            clearInterval(remainingTime);
+            nextQueButton.disabled = false;
+            e.target.setAttribute('class', 'disabled-item')
+            scoreCount++
+            console.log(i)
+            setTimeoutFunctio(i)
+        }else{
+            let iconCross = document.createElement('i');
+            iconCross.setAttribute('class', 'fa-solid fa-xmark')
+            e.target.appendChild(iconCross)
+            e.target.style.color = 'red';
+            clearInterval(remainingTime);
+            nextQueButton.disabled = false;
+            e.target.setAttribute('class', 'disabled-item')
+            setTimeoutFunctio(i)
+        }
+            
+        })
 
-           //console.log(i.setAttribute('class', 'disabled-item'));
-            // setTimeout(() => {
-            //     i.setAttribute('class', 'disabled-item')
-            // }, 6000);
-
-           let optionsDisable = setTimeout(setTimeoutFunctio, 10000, i)
+    let optionsDisable = setTimeout(setTimeoutFunctio, 10000, i)
             
        }
 }
@@ -167,17 +138,13 @@ function questionDynamic(index){
 
 
 const timerFunction = ()=>{ 
-
-         if(timer.innerText > 0){
-            timer.innerText --;
-            
-          }else{
-              nextQueButton.disabled = false; 
-            
-          }
-
+    if(timer.innerText > 0){
+        timer.innerText --;          
+    }else{
+        nextQueButton.disabled = false;           
+     }
 }
 
-        function setTimeoutFunctio(item){
-                item.setAttribute('class', 'disabled-item')
-            }
+function setTimeoutFunctio(item){
+    item.setAttribute('class', 'disabled-item')
+ }
