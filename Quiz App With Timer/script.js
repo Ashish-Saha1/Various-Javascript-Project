@@ -17,6 +17,7 @@ let correctAns = document.querySelector('.correct-ans')
 let nextQueButton = document.querySelector('.next-btn');
 
 let remainingTime;
+let indexCount = 0;
 let scoreCount = 0;
 
 startQuizButton.addEventListener('click',function(){
@@ -40,12 +41,48 @@ continueButton.addEventListener('click', ()=>{
      timer.innerHTML = 10;
      remainingTime = setInterval(timerFunction, 1000)
     
- 
-   
 
-
-let indexCount = 0;
+// let indexCount = 0;
 questionDynamic(indexCount)
+
+
+
+
+// nextQueButton.addEventListener('click', function(){
+//     let totalScore = document.querySelector('.score-calculation');
+//     let wishDisplay = document.querySelector('.display-wish');
+
+//    if(indexCount<questionsArr.length-1){
+//         indexCount ++
+//         questionDynamic(indexCount);
+//         nextQueButton.disabled = true;
+//         timer.innerHTML = 10;
+//         remainingTime = setInterval(timerFunction, 1000)
+//    }else{
+//         if(questionsArr.length === questionsArr[questionsArr.length-1].num){
+//         questionPage1Button.style.display = 'none';
+//         let resultPage = document.querySelector('.result-page');
+//         resultPage.style.display = 'block';
+//         totalScore.innerHTML =  scoreCount;
+//         //console.log(totalScore.innerHTML == questionsArr.length)
+
+//         if(totalScore.innerHTML == questionsArr.length){
+//             wishDisplay.innerHTML = "Congratulations"
+//         }else if(totalScore.innerHTML == 0){
+//             wishDisplay.innerHTML = "Disaster"
+//         }
+//     }
+       
+
+//    }
+
+
+// })
+
+
+})
+
+
 
 nextQueButton.addEventListener('click', function(){
     let totalScore = document.querySelector('.score-calculation');
@@ -79,7 +116,6 @@ nextQueButton.addEventListener('click', function(){
 })
 
 
-})
 
 
 function questionDynamic(index){
@@ -107,24 +143,28 @@ function questionDynamic(index){
     for(let i of optionsLi){
       i.addEventListener('click',(e)=>{
         if(e.target.innerHTML === questionsArr[index].ans){
-            let iconCorrect = document.createElement('i');
-            iconCorrect.setAttribute('class', 'fa-solid fa-check ')
-            e.target.appendChild(iconCorrect)
-            e.target.classList.add('correct-ans');
-            clearInterval(remainingTime);
-            nextQueButton.disabled = false;
-            e.target.setAttribute('class', 'disabled-item')
+            // let iconCorrect = document.createElement('i');
+            // iconCorrect.setAttribute('class', 'fa-solid fa-check ')
+            // e.target.appendChild(iconCorrect)
+            // e.target.classList.add('correct-ans');
+            // clearInterval(remainingTime);
+            // nextQueButton.disabled = false;
+            //e.target.setAttribute('class', 'disabled-item')
+            // let correctAns = document.querySelector('.correct-ans')
+            // let correctAnsww = document.querySelector(".fa-solid fa-check")
+            selectOptions(e,'fa-solid fa-check', 'correct-ans')
             scoreCount++
-            console.log(i)
             setTimeoutFunctio(i)
         }else{
-            let iconCross = document.createElement('i');
-            iconCross.setAttribute('class', 'fa-solid fa-xmark')
-            e.target.appendChild(iconCross)
-            e.target.style.color = 'red';
-            clearInterval(remainingTime);
-            nextQueButton.disabled = false;
-            e.target.setAttribute('class', 'disabled-item')
+            // let iconCross = document.createElement('i');
+            // iconCross.setAttribute('class', 'fa-solid fa-xmark')
+            // e.target.appendChild(iconCross)
+            // e.target.style.color = 'red';
+            // clearInterval(remainingTime);
+            // nextQueButton.disabled = false;
+            //e.target.setAttribute('class', 'disabled-item')
+
+            selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
             setTimeoutFunctio(i)
         }
             
@@ -147,4 +187,16 @@ const timerFunction = ()=>{
 
 function setTimeoutFunctio(item){
     item.setAttribute('class', 'disabled-item')
+ }
+
+
+ function selectOptions(event, attributeName, cssClassName){
+    let iconCreate = document.createElement('i');
+    iconCreate.setAttribute("class", attributeName)
+    event.target.appendChild(iconCreate)
+    event.target.classList.add(cssClassName);
+    clearInterval(remainingTime);
+    nextQueButton.disabled = false;
+
+
  }

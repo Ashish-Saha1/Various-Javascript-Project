@@ -238,9 +238,14 @@ header h3{
         margin-left: 10px; 
     }
 
-    .correct-ans{
+    .correctAns{
         border: 2px solid rgb(13, 223, 48) !important;
         color: rgb(23, 149, 253);
+    }
+
+    .wrong-ans{
+        border: 2px solid rgb(0, 0, 0) !important;
+        color: rgb(253, 23, 23);
     }
 
     .disabled-item{
