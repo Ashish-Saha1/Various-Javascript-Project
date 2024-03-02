@@ -2,11 +2,9 @@ let startQuizButton = document.querySelector('.start-btn');
 let exitQuizButton = document.querySelector('.exit-btn');
 let continueButton = document.querySelector('.continue-btn');
 
-
 let startPage = document.querySelector('.my-Quiz-app');
 let rulePage = document.querySelector('.rule-box');
 let questionPage1Button = document.querySelector('.question-page-1');
-
 
 let timer = document.querySelector('.timer')
 
@@ -19,6 +17,7 @@ let nextQueButton = document.querySelector('.next-btn');
 let remainingTime;
 let indexCount = 0;
 let scoreCount = 0;
+
 
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
@@ -35,59 +34,23 @@ exitQuizButton.addEventListener('click', function(){
 continueButton.addEventListener('click', ()=>{
     rulePage.style.display = "none";
     questionPage1Button.style.display = 'block';
-   
     nextQueButton.disabled = true;
-
-     timer.innerHTML = 10;
-     remainingTime = setInterval(timerFunction, 1000)
-    
-
-// let indexCount = 0;
-questionDynamic(indexCount)
-
-
-
-
-// nextQueButton.addEventListener('click', function(){
-//     let totalScore = document.querySelector('.score-calculation');
-//     let wishDisplay = document.querySelector('.display-wish');
-
-//    if(indexCount<questionsArr.length-1){
-//         indexCount ++
-//         questionDynamic(indexCount);
-//         nextQueButton.disabled = true;
-//         timer.innerHTML = 10;
-//         remainingTime = setInterval(timerFunction, 1000)
-//    }else{
-//         if(questionsArr.length === questionsArr[questionsArr.length-1].num){
-//         questionPage1Button.style.display = 'none';
-//         let resultPage = document.querySelector('.result-page');
-//         resultPage.style.display = 'block';
-//         totalScore.innerHTML =  scoreCount;
-//         //console.log(totalScore.innerHTML == questionsArr.length)
-
-//         if(totalScore.innerHTML == questionsArr.length){
-//             wishDisplay.innerHTML = "Congratulations"
-//         }else if(totalScore.innerHTML == 0){
-//             wishDisplay.innerHTML = "Disaster"
-//         }
-//     }
-       
-
-//    }
-
-
-// })
-
-
+    timer.innerHTML = 10;
+    remainingTime = setInterval(timerFunction, 1000)
+        //call below function to load dynamic question
+    questionDynamic(indexCount);
+   
 })
 
 
 
 nextQueButton.addEventListener('click', function(){
+    //here declear clearIntrval To reset timer after clicking nextBtn 
+    clearInterval(remainingTime);
+
     let totalScore = document.querySelector('.score-calculation');
     let wishDisplay = document.querySelector('.display-wish');
-
+        // After click next Que indexCount increse & load next question & timer will start as well (remainingTime)
    if(indexCount<questionsArr.length-1){
         indexCount ++
         questionDynamic(indexCount);
@@ -95,13 +58,13 @@ nextQueButton.addEventListener('click', function(){
         timer.innerHTML = 10;
         remainingTime = setInterval(timerFunction, 1000)
    }else{
+            //if all question end then load result page as per below condition
         if(questionsArr.length === questionsArr[questionsArr.length-1].num){
         questionPage1Button.style.display = 'none';
         let resultPage = document.querySelector('.result-page');
         resultPage.style.display = 'block';
         totalScore.innerHTML =  scoreCount;
-        //console.log(totalScore.innerHTML == questionsArr.length)
-
+            // Message will appear as per full or zero score
         if(totalScore.innerHTML == questionsArr.length){
             wishDisplay.innerHTML = "Congratulations"
         }else if(totalScore.innerHTML == 0){
@@ -109,7 +72,6 @@ nextQueButton.addEventListener('click', function(){
         }
     }
        
-
    }
 
 
@@ -117,14 +79,10 @@ nextQueButton.addEventListener('click', function(){
 
 
 
-
-function questionDynamic(index){
-               
+function questionDynamic(index){            
     let question = document.querySelector('.question-page-1_question');
-    let questionHeadElement = '<h2>' + questionsArr[index].num + ". "+  questionsArr[index].question + '</h2>';
-        
-    question.innerHTML = questionHeadElement;
-    
+    let questionHeadElement = '<h2>' + questionsArr[index].num + ". "+  questionsArr[index].question + '</h2>';       
+        question.innerHTML = questionHeadElement;
     let questionUl = document.createElement('ul');
          question.append(questionUl);
                 //create Li & input options in li innerHTML
@@ -134,59 +92,43 @@ function questionDynamic(index){
             questionUlLi.innerHTML = questionsArr[index].ansOptions[i]
         }
 
-        let pageNo = document.querySelector('.page1-of-5');
+    let pageNo = document.querySelector('.page1-of-5');
         pageNo.innerHTML = questionsArr[index].num + " of " + questionsArr.length +" Questions";
    
-        //let optionsLi = question.getElementsByTagName('li');
-        let optionsLi = question.getElementsByTagName('ul');
+
+        //This below code should be seperated in new function
+    let optionsLi = question.getElementsByTagName('ul');
 
     for(let i of optionsLi){
       i.addEventListener('click',(e)=>{
         if(e.target.innerHTML === questionsArr[index].ans){
-            // let iconCorrect = document.createElement('i');
-            // iconCorrect.setAttribute('class', 'fa-solid fa-check ')
-            // e.target.appendChild(iconCorrect)
-            // e.target.classList.add('correct-ans');
-            // clearInterval(remainingTime);
-            // nextQueButton.disabled = false;
-            //e.target.setAttribute('class', 'disabled-item')
-            // let correctAns = document.querySelector('.correct-ans')
-            // let correctAnsww = document.querySelector(".fa-solid fa-check")
             selectOptions(e,'fa-solid fa-check', 'correct-ans')
             scoreCount++
-            setTimeoutFunctio(i)
+            setTimeoutFunction(i)
         }else{
-            // let iconCross = document.createElement('i');
-            // iconCross.setAttribute('class', 'fa-solid fa-xmark')
-            // e.target.appendChild(iconCross)
-            // e.target.style.color = 'red';
-            // clearInterval(remainingTime);
-            // nextQueButton.disabled = false;
-            //e.target.setAttribute('class', 'disabled-item')
-
             selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
-            setTimeoutFunctio(i)
+            setTimeoutFunction(i)
         }
             
         })
 
-    let optionsDisable = setTimeout(setTimeoutFunctio, 10000, i)
-            
+        let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
+          
        }
 }
 
 
 
 const timerFunction = ()=>{ 
-    if(timer.innerText > 0){
-        timer.innerText --;          
+    if( timer.innerHTML > 0){
+         timer.innerHTML --;          
     }else{
-        nextQueButton.disabled = false;           
+        nextQueButton.disabled = false;          
      }
 }
 
-function setTimeoutFunctio(item){
-    item.setAttribute('class', 'disabled-item')
+function setTimeoutFunction(item){
+    item.setAttribute('class', 'disabled-item')  
  }
 
 
