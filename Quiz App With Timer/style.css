@@ -155,7 +155,14 @@ header h3{
         display: flex;
         justify-content: space-between;
         padding: 25px 30px; 
-        border-bottom: 4px solid rgb(60, 179, 219);
+        /* border-bottom: 4px solid rgb(60, 179, 219); */
+    }
+
+    .line-animation{
+        width: 0%;
+        height: 5px;
+        background-color: rgb(60, 179, 219);
+        transition: all 10s;
     }
 
     .question-page-1 header p{

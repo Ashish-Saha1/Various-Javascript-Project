@@ -39,7 +39,7 @@ continueButton.addEventListener('click', ()=>{
     remainingTime = setInterval(timerFunction, 1000)
         //call below function to load dynamic question
     questionDynamic(indexCount);
-   
+    //lineAnumation()
 })
 
 
@@ -47,6 +47,8 @@ continueButton.addEventListener('click', ()=>{
 nextQueButton.addEventListener('click', function(){
     //here declear clearIntrval To reset timer after clicking nextBtn 
     clearInterval(remainingTime);
+
+    lineAnumation()
 
     let totalScore = document.querySelector('.score-calculation');
     let wishDisplay = document.querySelector('.display-wish');
@@ -97,6 +99,31 @@ function questionDynamic(index){
    
 
         //This below code should be seperated in new function
+    // let optionsLi = question.getElementsByTagName('ul');
+
+    // for(let i of optionsLi){
+    //   i.addEventListener('click',(e)=>{
+    //     if(e.target.innerHTML === questionsArr[index].ans){
+    //         selectOptions(e,'fa-solid fa-check', 'correct-ans')
+    //         scoreCount++
+    //         setTimeoutFunction(i)
+    //     }else{
+    //         selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
+    //         setTimeoutFunction(i)
+    //     }
+            
+    //     })
+
+    //     let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
+          
+    //    }
+
+
+    answerSelect(question, indexCount)
+}
+
+            //This function is for to select answer then how is the change
+ function answerSelect(question, index){
     let optionsLi = question.getElementsByTagName('ul');
 
     for(let i of optionsLi){
@@ -115,7 +142,7 @@ function questionDynamic(index){
         let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
           
        }
-}
+ }
 
 
 
@@ -139,6 +166,19 @@ function setTimeoutFunction(item){
     event.target.classList.add(cssClassName);
     clearInterval(remainingTime);
     nextQueButton.disabled = false;
+
+
+ }
+
+
+ function lineAnumation(){
+    let lineDiv = document.querySelector('.line-animation');
+        console.log(lineDiv.style.width);       
+       let lineWidth = lineDiv.style.width = "0%";
+
+       if(lineWidth === "0%"){
+            lineWidth = "100%"
+       }
 
 
  }
