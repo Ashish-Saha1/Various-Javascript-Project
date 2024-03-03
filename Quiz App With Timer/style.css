@@ -149,6 +149,7 @@ header h3{
         box-shadow: 3px 2px 5px gray;
         border-radius: 10px;
         display: none;
+        /* position: relative; */
     }
 
     .question-page-1 header{
@@ -156,13 +157,18 @@ header h3{
         justify-content: space-between;
         padding: 25px 30px; 
         /* border-bottom: 4px solid rgb(60, 179, 219); */
+         position: relative;
     }
 
     .line-animation{
-        width: 0%;
+        /* width: 5%; */
         height: 5px;
-        background-color: rgb(60, 179, 219);
-        transition: all 10s;
+        background: rgb(60, 179, 219);
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        /* top: 70px; */
+        /* transition: all 10s; */
     }
 
     .question-page-1 header p{

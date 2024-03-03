@@ -17,7 +17,8 @@ let nextQueButton = document.querySelector('.next-btn');
 let remainingTime;
 let indexCount = 0;
 let scoreCount = 0;
-
+let conuterLine;
+let widthValue = 0;
 
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
@@ -32,6 +33,7 @@ exitQuizButton.addEventListener('click', function(){
 
 
 continueButton.addEventListener('click', ()=>{
+    // let xxx = setInterval(lineAnimation, 10);
     rulePage.style.display = "none";
     questionPage1Button.style.display = 'block';
     nextQueButton.disabled = true;
@@ -39,7 +41,9 @@ continueButton.addEventListener('click', ()=>{
     remainingTime = setInterval(timerFunction, 1000)
         //call below function to load dynamic question
     questionDynamic(indexCount);
-    //lineAnumation()
+
+    lineAnimation(0)
+    
 })
 
 
@@ -47,8 +51,12 @@ continueButton.addEventListener('click', ()=>{
 nextQueButton.addEventListener('click', function(){
     //here declear clearIntrval To reset timer after clicking nextBtn 
     clearInterval(remainingTime);
-
-    lineAnumation()
+    
+   let idd = setInterval(lineAnimation,10);
+     
+   clearInterval(conuterLine);
+   lineAnimation(widthValue)
+    
 
     let totalScore = document.querySelector('.score-calculation');
     let wishDisplay = document.querySelector('.display-wish');
@@ -170,15 +178,19 @@ function setTimeoutFunction(item){
 
  }
 
+ 
 
- function lineAnumation(){
+ function lineAnimation(time){
     let lineDiv = document.querySelector('.line-animation');
-        console.log(lineDiv.style.width);       
-       let lineWidth = lineDiv.style.width = "0%";
+   
+    conuterLine = setInterval(timeLine);
 
-       if(lineWidth === "0%"){
-            lineWidth = "100%"
-       }
-
-
+    function timeLine(){
+        time++;
+        lineDiv.style.width = time + "px";
+        if(time < 319){
+            clearInterval(conuterLine)
+        }
+    }
+   
  }
