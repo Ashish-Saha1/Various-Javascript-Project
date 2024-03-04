@@ -17,9 +17,9 @@ let nextQueButton = document.querySelector('.next-btn');
 let remainingTime;
 let indexCount = 0;
 let scoreCount = 0;
-let conuterLine;
-let widthValue = 0;
-
+// let conuterLine;
+// let widthValue = 0;
+let id ;
 startQuizButton.addEventListener('click',function(){
     startPage.style.display = "none";
     rulePage.style.display = "block";
@@ -42,8 +42,8 @@ continueButton.addEventListener('click', ()=>{
         //call below function to load dynamic question
     questionDynamic(indexCount);
 
-    lineAnimation(0)
-    
+    //lineAnimation(0)
+    myMove()
 })
 
 
@@ -52,11 +52,12 @@ nextQueButton.addEventListener('click', function(){
     //here declear clearIntrval To reset timer after clicking nextBtn 
     clearInterval(remainingTime);
     
-   let idd = setInterval(lineAnimation,10);
+   //let idd = setInterval(lineAnimation,10);
      
-   clearInterval(conuterLine);
-   lineAnimation(widthValue)
-    
+//    clearInterval(conuterLine);
+//    lineAnimation(widthValue)
+    clearInterval(id);
+    myMove()
 
     let totalScore = document.querySelector('.score-calculation');
     let wishDisplay = document.querySelector('.display-wish');
@@ -140,9 +141,11 @@ function questionDynamic(index){
             selectOptions(e,'fa-solid fa-check', 'correct-ans')
             scoreCount++
             setTimeoutFunction(i)
+            clearInterval(id);
         }else{
             selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
             setTimeoutFunction(i)
+            clearInterval(id);
         }
             
         })
@@ -180,17 +183,35 @@ function setTimeoutFunction(item){
 
  
 
- function lineAnimation(time){
-    let lineDiv = document.querySelector('.line-animation');
-   
-    conuterLine = setInterval(timeLine);
+//  function lineAnimation(time){
+//     let lineDiv = document.querySelector('.line-animation');   
+//     conuterLine = setInterval(timeLine);
 
-    function timeLine(){
-        time++;
-        lineDiv.style.width = time + "px";
-        if(time < 319){
-            clearInterval(conuterLine)
-        }
-    }
+//     function timeLine(){
+//         time++;
+//         lineDiv.style.width = time + "px";
+//         if(time < 319){
+//             clearInterval(conuterLine)
+//         }
+//     }
    
- }
+//  }
+
+function myMove() {
+    let elem = document.querySelector('.line-animation');
+    //const elem = document.getElementById("animate");   
+    let pos = 0;
+    clearInterval(id);
+    id = setInterval(frame, 32);
+    function frame() {
+      if (pos == 320) {
+        clearInterval(id);
+      } else {
+        pos++; 
+        // elem.style.top = pos + "px"; 
+        elem.style.width = pos + "px"; 
+        console.log(pos);
+        
+      }
+    }
+  }

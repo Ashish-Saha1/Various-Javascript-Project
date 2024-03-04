@@ -161,13 +161,13 @@ header h3{
     }
 
     .line-animation{
-        /* width: 5%; */
+        width: 10%;
         height: 5px;
         background: rgb(60, 179, 219);
         position: absolute;
         left: 0px;
-        bottom: 0px;
-        /* top: 70px; */
+        /* bottom: 0px; */
+        top: 70px;
         /* transition: all 10s; */
     }
 
