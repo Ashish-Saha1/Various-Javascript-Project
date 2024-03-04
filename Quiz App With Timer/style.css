@@ -166,9 +166,7 @@ header h3{
         background: rgb(60, 179, 219);
         position: absolute;
         left: 0px;
-        /* bottom: 0px; */
         top: 70px;
-        /* transition: all 10s; */
     }
 
     .question-page-1 header p{
