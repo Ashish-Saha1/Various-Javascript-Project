@@ -101,7 +101,8 @@ function questionDynamic(index){
 
             //This function is for to select answer then how is the change in options correct or wrong
  function answerSelect(question, index){
-    let optionsLi = question.getElementsByTagName('ul');
+    let optionsLi = question.getElementsByTagName('ul.children');
+    console.log(optionsLi)
     for(let i of optionsLi){
       i.addEventListener('click',(e)=>{
         if(e.target.innerHTML === questionsArr[index].ans){
