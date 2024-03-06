@@ -9,6 +9,9 @@ let crossMarks = document.querySelectorAll('.fa-xmark')
 let checkMark = document.querySelector('.fa-check');
 let correctAns = document.querySelector('.correct-ans')   
 let nextQueButton = document.querySelector('.next-btn');
+let resultPage = document.querySelector('.result-page');
+let exitResultButton = document.querySelector('.exit-result-btn');
+let replayButton = document.querySelector('.replay-btn');
 
 let remainingTime;
 let indexCount = 0;
@@ -26,8 +29,30 @@ exitQuizButton.addEventListener('click', function(){
     rulePage.style.display = "none";
 })
 
+exitResultButton.addEventListener('click',()=>{ 
+    //below function is refreash or reload as press F5
+    window.location.reload()
+})
 
+replayButton.addEventListener('click',()=>{
+    resultPage.style.display = "none";
+    rulePage.style.display = "none";
+    questionPage1Button.style.display = 'block';
+    nextQueButton.disabled = true;
+    timer.innerHTML = 10;
+    remainingTime = setInterval(timerFunction, 1000)
+        //call below function to load dynamic question
+    indexCount = 0;
+    scoreCount = 0;
+    questionDynamic(indexCount);
+    //     //Below function is for line animation
+    lineMoveAnimation()
+})
+
+        //Continue Button & replay button are same
 continueButton.addEventListener('click', ()=>{
+    indexCount = 0;
+    scoreCount = 0;
     rulePage.style.display = "none";
     questionPage1Button.style.display = 'block';
     nextQueButton.disabled = true;
@@ -61,7 +86,6 @@ nextQueButton.addEventListener('click', function(){
             //if all question end then load result page as per below condition
         if(questionsArr.length === questionsArr[questionsArr.length-1].num){
         questionPage1Button.style.display = 'none';
-        let resultPage = document.querySelector('.result-page');
         resultPage.style.display = 'block';
         totalScore.innerHTML =  scoreCount;
             // Message will appear as per full or zero score
@@ -100,65 +124,14 @@ function questionDynamic(index){
 }
 
             //This function is for to select answer then how is the change in options correct or wrong
-//  function answerSelect(question, index){
-//     let optionsLi = question.getElementsByTagName('ul.children');
-//     console.log(optionsLi)
-//     for(let i of optionsLi){
-//       i.addEventListener('click',(e)=>{
-//         if(e.target.innerHTML === questionsArr[index].ans){
-//             selectOptions(e,'fa-solid fa-check', 'correct-ans')
-//             scoreCount++
-//             setTimeoutFunction(i)
-//             clearInterval(conuterLine);
-//         }else{
-//             selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
-//             setTimeoutFunction(i)
-//             clearInterval(conuterLine);
-//         }
-            
-//         })
-
-//         let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
-          
-//        }
-//  }
-
-
 function answerSelect(question, index){
     let optionsLi = question.querySelectorAll('li')
-    //console.log(optionsLi)
-    // for(let i of optionsLi){
-    //     let clicked = i.getAttribute('data-clicked') === 'true';
-    //   i.addEventListener('click',(e)=>{
-    //     if(e.target.innerHTML === questionsArr[index].ans){
-    //         let clicked = e.target.getAttribute('data-clicked') === 'true';
-    //         selectOptions(e,'fa-solid fa-check', 'correct-ans')
-    //         scoreCount++
-    //         setTimeoutFunction(i)
-    //         clearInterval(conuterLine);
-    //        console.log(clicked);
-           
-    //     }else{
-    //         selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
-    //         setTimeoutFunction(i)
-    //         clearInterval(conuterLine);
-    //         let clicked = e.target.getAttribute('data-clicked') === 'true';
-    //         console.log(clicked);
-    //     }
-            
-    //     })
-
-    //     let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
-          
-    //    }
-
 
     for(let i of optionsLi){
       i.addEventListener('click',(e)=>{
         if(e.target.innerHTML === questionsArr[index].ans){
             selectOptions(e,'fa-solid fa-check', 'correct-ans')
-            scoreCount++
-            //setTimeoutFunction(i)
+            scoreCount++        
             clearInterval(conuterLine);
             optionsLi.forEach(element => {
                 setTimeoutFunction(element)
@@ -166,7 +139,6 @@ function answerSelect(question, index){
            
         }else{
             selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
-            //setTimeoutFunction(i)
             clearInterval(conuterLine);
             optionsLi.forEach(element => {
                 setTimeoutFunction(element)
