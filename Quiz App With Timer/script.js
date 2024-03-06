@@ -100,20 +100,77 @@ function questionDynamic(index){
 }
 
             //This function is for to select answer then how is the change in options correct or wrong
- function answerSelect(question, index){
-    let optionsLi = question.getElementsByTagName('ul.children');
-    console.log(optionsLi)
+//  function answerSelect(question, index){
+//     let optionsLi = question.getElementsByTagName('ul.children');
+//     console.log(optionsLi)
+//     for(let i of optionsLi){
+//       i.addEventListener('click',(e)=>{
+//         if(e.target.innerHTML === questionsArr[index].ans){
+//             selectOptions(e,'fa-solid fa-check', 'correct-ans')
+//             scoreCount++
+//             setTimeoutFunction(i)
+//             clearInterval(conuterLine);
+//         }else{
+//             selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
+//             setTimeoutFunction(i)
+//             clearInterval(conuterLine);
+//         }
+            
+//         })
+
+//         let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
+          
+//        }
+//  }
+
+
+function answerSelect(question, index){
+    let optionsLi = question.querySelectorAll('li')
+    //console.log(optionsLi)
+    // for(let i of optionsLi){
+    //     let clicked = i.getAttribute('data-clicked') === 'true';
+    //   i.addEventListener('click',(e)=>{
+    //     if(e.target.innerHTML === questionsArr[index].ans){
+    //         let clicked = e.target.getAttribute('data-clicked') === 'true';
+    //         selectOptions(e,'fa-solid fa-check', 'correct-ans')
+    //         scoreCount++
+    //         setTimeoutFunction(i)
+    //         clearInterval(conuterLine);
+    //        console.log(clicked);
+           
+    //     }else{
+    //         selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
+    //         setTimeoutFunction(i)
+    //         clearInterval(conuterLine);
+    //         let clicked = e.target.getAttribute('data-clicked') === 'true';
+    //         console.log(clicked);
+    //     }
+            
+    //     })
+
+    //     let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
+          
+    //    }
+
+
     for(let i of optionsLi){
       i.addEventListener('click',(e)=>{
         if(e.target.innerHTML === questionsArr[index].ans){
             selectOptions(e,'fa-solid fa-check', 'correct-ans')
             scoreCount++
-            setTimeoutFunction(i)
+            //setTimeoutFunction(i)
             clearInterval(conuterLine);
+            optionsLi.forEach(element => {
+                setTimeoutFunction(element)
+            });
+           
         }else{
             selectOptions(e,'fa-solid fa-xmark', 'wrong-ans')
-            setTimeoutFunction(i)
+            //setTimeoutFunction(i)
             clearInterval(conuterLine);
+            optionsLi.forEach(element => {
+                setTimeoutFunction(element)
+            });
         }
             
         })
@@ -121,7 +178,13 @@ function questionDynamic(index){
         let optionsDisable = setTimeout(setTimeoutFunction, 10000, i)
           
        }
+
+
  }
+
+
+
+
 
 
  //This function is for time count
