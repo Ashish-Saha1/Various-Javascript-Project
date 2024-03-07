@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    background-color: lightgrey;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 400px;
+    height: 350px;
+    background-color: rgb(231, 241, 250);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px dotted rgb(201, 203, 204);
+   /* transition: all .2px; */
+}
+
+.container:hover{
+    border: 3px solid rgb(201, 203, 204);
+}
+
+
+.container i{
+    font-size: 50px;
+    color: lightgreen;
+    margin-bottom: 20px;
+}
+
+button{
+    border: none;
+    /* text-shadow: 1px 1px 10px rgb(151, 151, 151); */
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.drag-text{
+    margin-bottom: 10px;
+}
+
+input{
+    display: none;
+}
