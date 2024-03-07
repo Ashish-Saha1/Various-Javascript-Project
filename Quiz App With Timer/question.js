@@ -57,5 +57,17 @@ const questionsArr = [
             "Node is a Framework",
             "Node is a Library"
         ]
+    },
+
+    {
+        num: 6,
+        question: "What is the full form of MERN stack?",
+        ans: "MongoDB, Express, React.js, and Node.js.",
+        ansOptions:[
+            "MongoDB, Express, Vue.js, and Node.js.",
+            "MongoDB, Express, React.js, and Node.js.",
+            "Python, Express, React.js, and Node.js.",
+            "MongoDB, Express, Redux, and Node.js."
+        ]
     }
 ]

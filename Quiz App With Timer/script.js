@@ -41,18 +41,16 @@ replayButton.addEventListener('click',()=>{
     nextQueButton.disabled = true;
     timer.innerHTML = 10;
     remainingTime = setInterval(timerFunction, 1000)
-        //call below function to load dynamic question
     indexCount = 0;
     scoreCount = 0;
+    //call below function to load dynamic question
     questionDynamic(indexCount);
-    //     //Below function is for line animation
+    //Below function is for line animation
     lineMoveAnimation()
 })
 
         //Continue Button & replay button are same
 continueButton.addEventListener('click', ()=>{
-    indexCount = 0;
-    scoreCount = 0;
     rulePage.style.display = "none";
     questionPage1Button.style.display = 'block';
     nextQueButton.disabled = true;
@@ -88,16 +86,20 @@ nextQueButton.addEventListener('click', function(){
         questionPage1Button.style.display = 'none';
         resultPage.style.display = 'block';
         totalScore.innerHTML =  scoreCount;
-            // Message will appear as per full or zero score
+            //Message will appear as per full or zero score
         if(totalScore.innerHTML == questionsArr.length){
             wishDisplay.innerHTML = "Congratulations"
         }else if(totalScore.innerHTML == 0){
             wishDisplay.innerHTML = "Disaster"
+        }else{
+            wishDisplay.innerHTML = "Carry on";
+            console.log(scoreCount,questionsArr.length);
         }
+
+       
     }
        
    }
-
 
 })
 
