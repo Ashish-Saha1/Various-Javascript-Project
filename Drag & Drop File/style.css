@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
 
@@ -22,7 +22,7 @@ body{
     align-items: center;
     flex-direction: column;
     border: 3px dotted rgb(201, 203, 204);
-   /* transition: all .2px; */
+
    background-repeat: no-repeat !important;
    background-position: center center !important;
    background-size: 100% 100% !important;
@@ -42,7 +42,7 @@ body{
 
 button{
     border: none;
-    /* text-shadow: 1px 1px 10px rgb(151, 151, 151); */
+
     font-size: 16px;
     font-weight: 600;
     margin-top: 10px;
@@ -56,4 +56,65 @@ button{
 
 input{
     display: none;
+} */
+
+
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    height: 100vh;
+}
+.AppBody {
+    border:3px dotted #d1d6d6;
+    width: 700px;
+    height: 500px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.AppBody.active {
+    border: 3px solid rgb(49, 168, 12);
+}
+.icon {
+    font-size: 100px;
+    color: rgba(13, 204, 45, 0.651);
+}
+.AppBody h3 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #333;
+}
+.AppBody span { 
+    font-size: 25px;
+    font-weight: 500;
+    color: #333;
+    margin: 10px 0 15px 0;
+}
+.AppBody button {
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: #fff;
+ color: rgba(13, 204, 45, 0.651);
+  border-radius: 5px;
+  cursor: pointer; 
+}
+.AppBody img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
